@@ -40,6 +40,8 @@ capitalizeFirstLetter(string) {
     let parsedData = await data.json();
     this.props.setProgress(70);
 
+    if (!parsedData.articles) return;
+    
     this.setState({
       articles: parsedData.articles,
       totalResults: parsedData.totalResults,
