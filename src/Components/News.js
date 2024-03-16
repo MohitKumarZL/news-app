@@ -89,7 +89,7 @@ capitalizeFirstLetter(string) {
           <div className="row">
           {this.state.articles.map((element) => {
             return (
-              <div className="col-md-4" key={element.url}>
+              <div className="col-md-4 my-3" key={element.url}>
                 <NewsItem
                   title={element.title ? element.title.slice(0, 15) : ""}
                   description={element.description ? element.description.slice(0, 50) : ""}
