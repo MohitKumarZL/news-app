@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import NewsItem from "./NewsItem";
-import Spinner from "../Spinner";
+// import Spinner from "../Spinner";
 import PropTypes from "prop-types";
-import InfiniteScroll from "react-infinite-scroll-component";
+// import InfiniteScroll from "react-infinite-scroll-component";
+
+import json from "../articles.json"
 
 export class News extends Component {
   static defaultProps = {
@@ -24,7 +26,7 @@ capitalizeFirstLetter(string) {
   constructor(props) {
     super(props);
     this.state = {
-      articles: [],
+      articles: json.articles,
       loading: false,
       page: 1,
       totalResults: 0,
@@ -50,9 +52,9 @@ capitalizeFirstLetter(string) {
     this.props.setProgress(100);
   }
 
-  async componentDidMount() {
-    this.updatedNews();
-  }
+  // async componentDidMount() {
+  //   this.updatedNews();
+  // }
 
   handlePreviousClick = async () => {
     this.setState({page:this.state.page -1})
@@ -78,15 +80,15 @@ capitalizeFirstLetter(string) {
 
   render() {
     return (
-      <>
+      <div>
         <h2 className="my-3"style={{textAlign:"center"}}> Top Headlines on {this.capitalizeFirstLetter(this.props.category)} </h2>
         
-        <InfiniteScroll
+        {/* <InfiniteScroll
           dataLength={this.state.articles.length}
           next={this.fetchMoreData}
           hasMore={this.state.articles.length !== this.state.totalResults}
           loader={<Spinner/>}
-        >
+        > */}
         <div className="container my-3">
           <div className="row">
           {this.state.articles.map((element) => {
@@ -106,8 +108,8 @@ capitalizeFirstLetter(string) {
           })}
           </div>
         </div>
-        </InfiniteScroll>
-      </>
+        {/* </InfiniteScroll> */}
+      </div>
     );
   }
 }
